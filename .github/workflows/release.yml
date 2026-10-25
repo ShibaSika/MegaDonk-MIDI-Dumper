@@ -1,7 +1,8 @@
 name: release
 on:
   push:
-    tags: ['v*']
+    branches: [main]
+    paths: ['release/**', 'VERSION']
 permissions:
   contents: write
 jobs:
@@ -13,6 +14,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" release/MegaDonk-MIDI-Dumper-Windows.zip \
-            --title "MegaDonk MIDI Dumper ${GITHUB_REF_NAME#v}" \
+          v=$(cat VERSION)
+          if gh release view "v$v" >/dev/null 2>&1; then
+            gh release upload "v$v" release/MegaDonk-MIDI-Dumper-Windows.zip --clobber
+            exit 0
+          fi
+          gh release create "v$v" release/MegaDonk-MIDI-Dumper-Windows.zip --target "$GITHUB_SHA" \
+            --title "MegaDonk MIDI Dumper $v" \
             --notes "Windows download: MegaDonk-MIDI-Dumper-Windows.zip. Unzip it anywhere, then drop .tbt files or folders on MegaDonk MIDI Dumper.exe. See the README for details."
