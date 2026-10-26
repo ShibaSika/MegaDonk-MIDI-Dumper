@@ -1,5 +1,7 @@
 # MegaDonk MIDI Dumper
 
+**Download for Windows:** [MegaDonk-MIDI-Dumper-Windows.zip](https://github.com/ShibaSika/MegaDonk-MIDI-Dumper/releases/latest/download/MegaDonk-MIDI-Dumper-Windows.zip) (version 1.2). Unzip it anywhere and keep the folder together. Windows may say it protected your PC because the program is not signed: choose **More info**, then **Run anyway**.
+
 Turns TabIt files (`.tbt`) into standard MIDI files, as many as you like at once. TabIt does not need to be
 installed or opened: each `.tbt` is read directly into the MIDI TabIt itself would export (checked event for
 event against TabIt's own exports), and every written file is read back and checked.
