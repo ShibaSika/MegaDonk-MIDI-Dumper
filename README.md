@@ -1,6 +1,6 @@
 # MegaDonk MIDI Dumper
 
-**Download for Windows:** [MegaDonk-MIDI-Dumper-Windows.zip](https://github.com/ShibaSika/MegaDonk-MIDI-Dumper/releases/latest/download/MegaDonk-MIDI-Dumper-Windows.zip) (version 1.0). Unzip it anywhere and keep the folder together. Windows may say it protected your PC because the program is not signed: choose **More info**, then **Run anyway**.
+**Download for Windows:** [MegaDonk-MIDI-Dumper-Windows.zip](https://github.com/ShibaSika/MegaDonk-MIDI-Dumper/releases/latest/download/MegaDonk-MIDI-Dumper-Windows.zip) (version 1.1). Unzip it anywhere and keep the folder together. Windows may say it protected your PC because the program is not signed: choose **More info**, then **Run anyway**.
 
 Turns TabIt files (`.tbt`) into standard MIDI files, as many as you like at once. TabIt does not need to be
 installed or opened: each `.tbt` is read directly into the MIDI TabIt itself would export (checked event for
@@ -42,6 +42,11 @@ draw a line between tempo points (Mixcraft's master tempo, for one) would otherw
 each change bar by bar. Bars that are not 4/4 in TabIt get their own time signature, where TabIt's export
 declares 4/4 throughout, so a program's bar grid stays on TabIt's bar lines. **Exactly as TabIt exports it**
 keeps TabIt's tempo events and 4/4 as they are.
+
+If a program still slides into the tempo changes, untick **Tempo changes mid-song** (or pass
+`--no-tempo-changes`). Only the starting tempo is then written. Each change is marked "Tempo N BPM" on the
+timeline, and the report lists where they go (for example "bar 67, beat 1 to 95 BPM"), so you can add them
+back in the program by hand.
 
 ## The report
 
