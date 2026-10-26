@@ -1,7 +1,5 @@
 # MegaDonk MIDI Dumper
 
-**Download for Windows:** [MegaDonk-MIDI-Dumper-Windows.zip](https://github.com/ShibaSika/MegaDonk-MIDI-Dumper/releases/latest/download/MegaDonk-MIDI-Dumper-Windows.zip) (version 1.1). Unzip it anywhere and keep the folder together. Windows may say it protected your PC because the program is not signed: choose **More info**, then **Run anyway**.
-
 Turns TabIt files (`.tbt`) into standard MIDI files, as many as you like at once. TabIt does not need to be
 installed or opened: each `.tbt` is read directly into the MIDI TabIt itself would export (checked event for
 event against TabIt's own exports), and every written file is read back and checked.
@@ -30,9 +28,10 @@ Two songs with the same name never overwrite each other: the second gets its fol
 ## Volume
 
 In the first two modes, volume changes also reach the notes already ringing, as in TabIt's own playback. Each
-track's volume as set in TabIt becomes its channel volume (CC7), and every volume change an expression (CC11)
-of that much percent of the track volume. A change louder than the track volume makes the notes struck under it
-louder (velocity), while notes ringing into it stay at the track volume. Untick the Volume option, or pass
+track's volume as set in TabIt becomes its starting expression (CC11), and every volume change the expression
+from there on. Both keep TabIt's own numbers, which run to 127 like a MIDI controller, so a volume of 96 plays at
+96/127 of full loudness wherever it appears. The channel volume (CC7) is set to full, and the notes are struck at
+the track volume. Untick the Volume option, or pass
 `--tabit-volume`, to keep TabIt's own export: there a volume change only sets the loudness of the notes after it.
 
 ## Tempo and time signatures
